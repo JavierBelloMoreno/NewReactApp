@@ -48,6 +48,7 @@ const StartGameScreen = (props) => {
 		setConfirm(true);
 		setEnteredValue("");
 		setSelectNumber(chosenNumber);
+		Keyboard.dismiss();
 	};
 
 	let confirmOutput;
@@ -57,7 +58,7 @@ const StartGameScreen = (props) => {
 			<Card style={styles.sumaryContainer}>
 				<Text>You Selected</Text>
 				<NumberContainer>{selectNumber}</NumberContainer>
-				<Button title='START GAME'/>
+				<Button title='START GAME' onPress={() => props.onStartGame(selectNumber)}/>
 			</Card>
 		);
 	}
