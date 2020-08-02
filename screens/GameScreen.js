@@ -6,6 +6,7 @@ import {
 	Alert,
 	ScrollView,
 	FlatList,
+	Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -75,6 +76,12 @@ const GameScreen = (props) => {
 		]);
 	};
 
+	let listContainerBig = styles.listContainer;
+
+	if (Dimensions.get("window").width < 350) {
+		listContainerBig = styles.listContainerBig;
+	}
+
 	return (
 		<View style={styles.screen}>
 			<Text>Oponent Guess</Text>
@@ -114,12 +121,16 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		maxWidth: "90%",
 		justifyContent: "space-around",
-		marginTop: 20,
+		marginTop: Dimensions.get("window").height > 600 ? 20 : 5,
 		width: 500,
 	},
 	listContainer: {
 		flex: 1,
 		width: "60%",
+	},
+	listContainerBig: {
+		flex: 1,
+		width: "80%",
 	},
 	list: {
 		flexGrow: 1,
